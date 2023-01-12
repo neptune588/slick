@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+uli {
+    list-style: none;
+}
+
+.wrap {
+    width: 800px;
+    margin: 100px auto 0;
+/*  height의 기본값은 auto -> auto의 경우 자식만큼의 높이를 차지한다. */
+}
+
+.wrap .main {
+
+}
+
+.wrap .main .slick {
+    height: 420px;
+}
+
+.wrap .main .slick .slick-slide {
+    height: 420px;
+}
+
+.wrap .main .slick .slick-slide video {
+    width: 100%; 
+/*  video의 경우는 비율을 유지하려는 속성때문에 높이값만 따로 조절이 안된다.
+    따라서 넓이를 조절해줘야 높이가 따라온다. */
+}
+
+.wrap .main .slick .slick-arrow {
+    position: absolute;
+/*  자기몸의 반만큼 */
+    top: calc(50% - 20px);
+/*  폰트의 기본값은 16px
+    크롬에서는 최소 폰트 크기가 10px이기 때문에 
+    8px --> 적용이 안됨 아예 0은 되지만 1~9는 안됨 */
+    font-size: 0;
+    visibility: hidden;
+/*  height의 경우 기본값이 auto, 즉 부모가 자식의 높이를 따라간다는 건데
+    거기서 자식에게 부모의 %값을 줘버리면 모순되는 현상이 발생한다.
+    따라서 자식에게 부모의 %를 주고 싶다면 부모에게 높이값을 특정 해주어야
+    효과가 적용된다. */
+}
+
+.wrap .main .slick .slick-arrow.slick-prev {
+    z-index: 10;
+    left: 5%;
+}
+
+.wrap .main .slick .slick-arrow.slick-prev::after {
+    content: "\f0d9";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    visibility: visible;
+    font-size: 40px;
+    color: white;
+}
+
+.wrap .main .slick .slick-arrow.slick-next {
+    right: 5%;
+}
+
+.wrap .main .slick .slick-arrow.slick-next::after {
+    content: "\f0da";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    visibility: visible;
+    font-size: 40px;
+    color: white;
+}
+
+.wrap .main .slick .slick-dots {
+    text-align: center;
+}
+
+.wrap .main .slick .slick-dots li /* 블럭요소 */ {
+    display: inline-block; /* 속성은 inline 그리고 공간을 인식하게  */
+    margin: 10px 5px 0;
+}
+
+.wrap .main .slick .slick-dots li button {
+    border: none;
+    font-size: 0; /* 글자 안보이게 하는거 */
+    width: 15px; height: 15px; 
+    /* 유일하게 버튼과 이미지는 wid heig가 먹힌다. inline요소임에도 */
+    border-radius: 50%;
+    background-color: #999;
+    transition: 0.3s;
+}
+
+.wrap .main .slick .slick-dots li.slick-active button {
+    background-color: cornflowerblue;
+    width: 30px;
+    border-radius: 10px;
+}
